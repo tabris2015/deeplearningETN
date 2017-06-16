@@ -97,20 +97,12 @@ while(1):
             roi = cv2.resize(roi, (28, 28), interpolation=cv2.INTER_AREA)
             roi = cv2.dilate(roi, (3, 3))
 
-            # calcular su HOG
-            # roi_hog_fd = hog(
-            #			roi,
-            #			orientations=9,
-            #			pixels_per_cell=(14, 14),
-            #			cells_per_block=(1, 1),
-            #			visualise=False
-            #			)
             # realizar la prediccion
 
             nbr = clf.predict(roi.reshape((1, 28, 28, 1)))
             #print np.argmax(nbr)
             pred = np.argmax(nbr)
-            print nbr
+            #print nbr
             
             cv2.putText(
                 im,
